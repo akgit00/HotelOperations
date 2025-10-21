@@ -3,6 +3,27 @@ package com.pluralsight;
 public class Employee {
     private int employeeId;
     private String name;
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setPayRate(double payRate) {
+        this.payRate = payRate;
+    }
+
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
     private String department;
     private double payRate;
     private double hoursWorked;
