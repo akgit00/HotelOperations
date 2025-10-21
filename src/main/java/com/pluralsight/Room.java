@@ -53,6 +53,7 @@ public class Room {
         return false;
     }
 
+    //This section is for adding new methods for exercise 2
 
     public void checkIn() {
         if (!isAvailable()) {
