@@ -27,13 +27,17 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double startTime;
+    private boolean isClockedIn;
 
-    public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
+    public Employee(int employeeId, String name, String department, double payRate, double hoursWorked, double startTime) {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
+        this.startTime = startTime;
+        this.isClockedIn = isClockedIn;
     }
 
     public int getEmployeeId() {
@@ -71,5 +75,24 @@ public class Employee {
         double regularPay = getRegularHours() * payRate;
         double overtimePay = getOvertimeHours() * (payRate * 1.5);
         return regularPay + overtimePay;
+    }
+
+    public void punchTimeCard(double time) {
+        if (!isClockedIn) {
+            // Employee clocking in
+            startTime = time;
+            isClockedIn = true;
+            System.out.println(name + " punched in at " + time);
+        } else {
+            // Employee clocking out
+            double hours = time - startTime;
+            if (hours < 0) {
+                System.out.println("Invalid time entry. Punch-out time cannot be earlier than punch-in time.");
+                return;
+            }
+            hoursWorked += hours;
+            isClockedIn = false;
+            System.out.println(name + " punched out at " + time + " | Worked " + hours + " hours this shift.");
+        }
     }
 }
