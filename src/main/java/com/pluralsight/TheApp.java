@@ -14,7 +14,7 @@ public class TheApp {
         System.out.println("Total: $" + res.getReservationTotal());
 
         // Testing Employee
-        Employee emp = new Employee(101, "Ahmad", "Housekeeping", 20.0, 45);
+        Employee emp = new Employee(101, "Ahmad", "Finance", 60.0, 45);
         System.out.println("Employee: " + emp.getName());
         System.out.println("Regular hours: " + emp.getRegularHours());
         System.out.println("Overtime hours: " + emp.getOvertimeHours());
