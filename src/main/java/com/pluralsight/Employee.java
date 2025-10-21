@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalDateTime;
+
 public class Employee {
     private int employeeId;
     private String name;
@@ -77,22 +79,53 @@ public class Employee {
         return regularPay + overtimePay;
     }
 
-    public void punchTimeCard(double time) {
+
+    // --- Overloaded punchIn methods ---
+    public void punchIn(double time) {
+        startTime = time;
+        isClockedIn = true;
+        System.out.println(name + " punched in at " + time);
+    }
+
+    public void punchIn() {
+        LocalDateTime now = LocalDateTime.now();
+        double time = now.getHour() + (now.getMinute() / 60.0);
+        startTime = time;
+        isClockedIn = true;
+        System.out.printf("%s punched in at %.2f (%02d:%02d)\n", name, time, now.getHour(), now.getMinute());
+    }
+
+    // --- Overloaded punchOut methods ---
+    public void punchOut(double time) {
         if (!isClockedIn) {
-            // Employee clocking in
-            startTime = time;
-            isClockedIn = true;
-            System.out.println(name + " punched in at " + time);
-        } else {
-            // Employee clocking out
-            double hours = time - startTime;
-            if (hours < 0) {
-                System.out.println("Invalid time entry. Punch-out time cannot be earlier than punch-in time.");
-                return;
-            }
-            hoursWorked += hours;
-            isClockedIn = false;
-            System.out.println(name + " punched out at " + time + " | Worked " + hours + " hours this shift.");
+            System.out.println(name + " is not currently clocked in!");
+            return;
         }
+        double hours = time - startTime;
+        if (hours < 0) {
+            System.out.println("Invalid punch-out time.");
+            return;
+        }
+        hoursWorked += hours;
+        isClockedIn = false;
+        System.out.println(name + " punched out at " + time + " | Worked " + hours + " hours this shift.");
+    }
+
+    public void punchOut() {
+        if (!isClockedIn) {
+            System.out.println(name + " is not currently clocked in!");
+            return;
+        }
+        LocalDateTime now = LocalDateTime.now();
+        double time = now.getHour() + (now.getMinute() / 60.0);
+        double hours = time - startTime;
+        if (hours < 0) {
+            System.out.println("Invalid time entry.");
+            return;
+        }
+        hoursWorked += hours;
+        isClockedIn = false;
+        System.out.printf("%s punched out at %.2f (%02d:%02d) | Worked %.2f hours.\n",
+                name, time, now.getHour(), now.getMinute(), hours);
     }
 }

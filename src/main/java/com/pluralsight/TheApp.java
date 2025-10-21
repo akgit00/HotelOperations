@@ -18,15 +18,15 @@ public class TheApp {
 
         // Testing Employee
         Employee emp = new Employee(101, "Ahmad", "Finance", 60.0, 45, 10.05);
-        emp.punchTimeCard(9.0);
-        emp.punchTimeCard(17.5);
-
         System.out.println("Employee: " + emp.getName());
         System.out.println("Total hours worked: " + emp.getHoursWorked());
         System.out.println("Total pay: $" + emp.getTotalPay());
         System.out.println("Regular hours: " + emp.getRegularHours());
         System.out.println("Overtime hours: " + emp.getOvertimeHours());
         System.out.println("Total Pay: $" + emp.getTotalPay());
+
+        emp.punchIn();
+        emp.punchOut();
 
     }
 }
