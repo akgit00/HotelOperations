@@ -51,7 +51,34 @@ public class Room {
             return true;
         }
         return false;
-
     }
 
+
+    public void checkIn() {
+        if (!isAvailable()) {
+            System.out.println("Room is not available for check-in.");
+            return;
+        }
+        isOccupied = true;
+        isDirty = true;
+        System.out.println("Guest checked in successfully!");
+    }
+
+    public void checkOut() {
+        if (!isOccupied) {
+            System.out.println("No guest to check out.");
+            return;
+        }
+        isOccupied = false;
+        System.out.println("Guest checked out. Room must be cleaned before next guest.");
+    }
+
+    public void cleanRoom() {
+        if (isOccupied) {
+            System.out.println("Cannot clean room while it is occupied!");
+            return;
+        }
+        isDirty = false;
+        System.out.println("Room has been cleaned and is now available.");
+    }
 }
