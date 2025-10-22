@@ -16,7 +16,7 @@ class EmployeeTest {
         emp.punchOut(17.0); // 8 hours worked
 
         //assert
-        assertEquals(8.0, emp.getHoursWorked(), 0.01);
+        assertEquals(8.0, emp.getHoursWorked());
     }
 
     @Test
@@ -29,7 +29,7 @@ class EmployeeTest {
         emp.punchOut(15.5); // 5.5 hours
 
         //assert
-        assertEquals(5.5, emp.getHoursWorked(), 0.01);
+        assertEquals(5.5, emp.getHoursWorked());
     }
 
     @Test
@@ -44,7 +44,7 @@ class EmployeeTest {
         emp.punchOut(17.5); // 4.5 hours
 
         //assert
-        assertEquals(8.5, emp.getHoursWorked(), 0.01);
+        assertEquals(8.5, emp.getHoursWorked());
     }
 
     @Test
@@ -57,7 +57,7 @@ class EmployeeTest {
         emp.punchOut(14.0);
 
         //assert
-        assertEquals(0.0, emp.getHoursWorked(), 0.01);
+        assertEquals(0.0, emp.getHoursWorked());
     }
 
 
